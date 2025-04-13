@@ -1,1 +1,1 @@
-# simple_ml_app
+# not_simple_ml_app
