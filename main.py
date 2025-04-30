@@ -2,6 +2,7 @@ import os
 import argparse
 from dotenv import load_dotenv
 from settings import Settings
+from load_secrets import load_secrets
 
 
 def export_envs(environment: str = "dev") -> None:
@@ -37,9 +38,12 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
+    load_secrets("secrets.yaml")
+
     export_envs(args.environment)
 
     settings = Settings()
-
+    print("Settings loaded:", settings.dict())
     print("APP_NAME: ", settings.APP_NAME)
     print("ENVIRONMENT: ", settings.ENVIRONMENT)
+    print("SECRET:", settings.SECRET)
